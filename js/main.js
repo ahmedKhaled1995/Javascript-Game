@@ -14,23 +14,24 @@ controls.setControls();
 // Creating the upper walls
 let higherObstacle = new GameObject(game.getContext(), obstacleStartingX, hightObstaleStartingPoint,
  obstacleWidth, (obstacleMaxHeight-safeFactor),
-  "red", obstcaleSpeed, undefined);
+  "crimson", obstcaleSpeed, undefined);
 
 let higherObstcaleGenerator = new HighObstaclesGenerator(game.getContext(), higherObstacle, true);
-higherObstcaleGenerator.startGeneration(1000);
+higherObstcaleGenerator.startGeneration(obstcaleGenerationSpeed);
 
 // Creating the lower walls
 let lowerObstacle = new GameObject(game.getContext(), obstacleStartingX, lowObstaleStartingPoint,
  obstacleWidth, obstacleMaxHeight-safeFactor,
-  "red", obstcaleSpeed, undefined);
+  "crimson", obstcaleSpeed, undefined);
 let lowerObstcaleGenerator = new LowObstaclesGenerator(game.getContext(), lowerObstacle, true);
-lowerObstcaleGenerator.startGeneration(1000);
+lowerObstcaleGenerator.startGeneration(obstcaleGenerationSpeed);
 
 // Creating the rockets attacking the player
-let rocket = new GameObject(game.getContext(), gameWorldWidth, gameWorldHeight/2, 50, 30,
- "green", 1, document.querySelector("#rocket"));
+let rocket = new GameObject(game.getContext(), gameWorldWidth, gameWorldHeight/2, projectileWidth, projectileHeight,
+ "green", projectileSpeed, document.querySelector("#rocket"));
 let rocketGenerator = new ProjectileGenerator(game.getContext(), rocket, false);
-rocketGenerator.startGeneration(2000);
+//rocketGenerator.hardDifficulty();
+rocketGenerator.startGeneration(projectileGenerationSpeed);
 
 // Updating the game world at 30 fps
 game.update(() => {

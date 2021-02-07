@@ -10,6 +10,7 @@ const playerWidth = 30;
 const playerHeight = 30;
 
 const obstcaleSpeed = 1;
+const obstcaleGenerationSpeed = 1000;
 const obstacleStartingX = 300;
 const obstacleWidth = 10;
 const obstacleMaxHeight = (gameWorldHeight - playerHeight) / 2;
@@ -18,3 +19,8 @@ const obstacleVerticalIncrement = 3;
 const lowObstaleStartingPoint = gameWorldHeight - obstacleMaxHeight;
 const hightObstaleStartingPoint = 0;
 const safeFactor = 5;
+
+const projectileSpeed = 1;
+const projectileGenerationSpeed = 2000;
+const projectileWidth = 50;
+const projectileHeight = 30;

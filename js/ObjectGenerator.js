@@ -5,6 +5,7 @@ class ObjectGenerator{
         this.randmoizeShape = randmoizeShape;
 
         this.objects = [this.gameObject];
+        this.speed = this.gameObject.speed;
     }
 
     getRandomWidth(){
@@ -127,6 +128,42 @@ class ProjectileGenerator extends ObjectGenerator{
       super(context, gameObject, randmoizeShape);
     }
 
+    normalDifficulty(){
+        const timeToDifficultySpike = 5 * 1000;
+        // Difficulty spike one
+        setTimeout(()=>{
+            this.modifyGameDifficulty(2, 4);
+        }, timeToDifficultySpike);
+        // Difficulty spike two
+        setTimeout(()=>{
+            this.modifyGameDifficulty(2, 1);
+        }, timeToDifficultySpike*2);
+    }
+
+    hardDifficulty(){
+        const timeToDifficultySpike = 5 * 1000;
+        // Difficulty spike one
+        setTimeout(()=>{
+            this.modifyGameDifficulty(3, 4);
+        }, timeToDifficultySpike);
+        // Difficulty spike two
+        setTimeout(()=>{
+            this.modifyGameDifficulty(3, 2);
+        }, timeToDifficultySpike*2);
+    }
+
+    modifyGameDifficulty(speedFactor, generationFactor){
+        console.log("difficulty increased");
+        // Increase projectile spped
+        this.speed *= speedFactor;
+        this.objects.forEach((item)=>{
+            item.speed = this.speed;
+        });
+        // Increase projectile generation
+        clearInterval(this.generationInterva);
+        this.startGeneration(this.generationTime/generationFactor);
+    }
+
     getRandomStartingY(){
         const minY =  0.1 * gameWorldHeight;
         const maxY = 0.9 * gameWorldHeight;
@@ -134,14 +171,15 @@ class ProjectileGenerator extends ObjectGenerator{
     }
 
     startGeneration(timeInMilliseconds){
-        let intervalID = setInterval(()=>{
+        this.generationTime = timeInMilliseconds;
+        this.generationInterva = setInterval(()=>{
             const startX = gameWorldWidth;  
             let startY, width, height;
             startY = this.getRandomStartingY();
             width = this.gameObject.width; 
             height = this.gameObject.height;
             this.objects.push(new GameObject(this.context, startX, startY,
-                 width, height, this.gameObject.color, this.gameObject.speed, this.gameObject.img));
+                    width, height, this.gameObject.color, this.gameObject.speed, this.gameObject.img));
         }, timeInMilliseconds);
     }
 }
