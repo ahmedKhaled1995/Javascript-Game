@@ -1,26 +1,26 @@
 const FPS = 60;
 
-const gameWorldWidth = 960;
-const gameWorldHeight = 540;
+const GAME_WORLD_WIDTH = 960;
+const GAME_WORLD_HEIGHT = 540;
 
-const playerStartingX = 50;
-const playerStartingY = gameWorldHeight / 2;
-const playerSpeed = 3;
-const playerWidth = 30;
-const playerHeight = 30;
+const PLAYER_STARTING_X = 50;
+const PLAYER_STARTING_Y = GAME_WORLD_HEIGHT / 2;
+const PLAYER_SPEED = 3;
+const PLAYER_WIDTH = 30;
+const PLAYER_HEIGHT = 30;
 
-const obstcaleSpeed = 1;
-const obstcaleGenerationSpeed = 1000;
-const obstacleStartingX = 300;
-const obstacleWidth = 10;
-const obstacleMaxHeight = (gameWorldHeight - playerHeight) / 2;
-const obstacleMinHeight = 20;
-const obstacleVerticalIncrement = 3;
-const lowObstaleStartingPoint = gameWorldHeight - obstacleMaxHeight;
-const hightObstaleStartingPoint = 0;
-const safeFactor = 5;
+const OBSTCALE_SPEED = 1;
+const OBSTCALE_GENERATION_SPEED = 1000;
+const OBSTCALE_STARTING_X = 300;
+const OBSTCALE_WIDTH = 10;
+const OBSTCALE_MAX_HEIGHT = (GAME_WORLD_HEIGHT - PLAYER_HEIGHT) / 2;
+const OBSTCALE_MIN_HEIGHT = 20;
+const OBSTCALE_VERTICAL_INCREMENT = 3;
+const LOWER_OBSTCALE_STARTING_POINT = GAME_WORLD_HEIGHT - OBSTCALE_MAX_HEIGHT;
+const HEIGHER_OBSTCALE_STARTING_POINT = 0;
+const SAFE_FACTOR = 5;
 
-const projectileSpeed = 1;
+const PROJECTILE_SPEED = 1;
 const projectileGenerationSpeed = 2000;
-const projectileWidth = 50;
-const projectileHeight = 30;
+const PROJECTILE_GENERATION_SPEED = 50;
+const PROJECTILE_HEIGHT = 30;

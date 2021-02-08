@@ -15,7 +15,7 @@ class ObjectGenerator{
     }
 
     getRandomHeight(){
-        const maxHeight = obstacleMaxHeight;
+        const maxHeight = OBSTCALE_MAX_HEIGHT;
         const minHeight = 0.25 * maxHeight;
         return Math.floor(Math.random()*(maxHeight-minHeight+1)+minHeight);
     }
@@ -29,7 +29,7 @@ class ObjectGenerator{
 
     stretchObjectsVertically(){
         this.objects.forEach((object)=>{
-            object.stretchVertically(obstacleMinHeight, obstacleMaxHeight, obstacleVerticalIncrement);
+            object.stretchVertically(OBSTCALE_MIN_HEIGHT, OBSTCALE_MAX_HEIGHT, OBSTCALE_VERTICAL_INCREMENT);
             object.drawSprite();
         });
     }
@@ -37,7 +37,7 @@ class ObjectGenerator{
     moveAndStretch(direction){
         this.objects.forEach((object)=>{
             object.autoMoveOneDirection(direction);
-            object.stretchVertically(obstacleMinHeight, obstacleMaxHeight, obstacleVerticalIncrement);
+            object.stretchVertically(OBSTCALE_MIN_HEIGHT, OBSTCALE_MAX_HEIGHT, OBSTCALE_VERTICAL_INCREMENT);
             object.drawSprite();
         });
     }
@@ -64,14 +64,14 @@ class HighObstaclesGenerator extends ObjectGenerator{
 
     startGeneration(timeInMilliseconds){
         let intervalID = setInterval(()=>{
-            const startX = gameWorldWidth;  
+            const startX = GAME_WORLD_WIDTH;  
             let startY, width, height;
             startY = this.gameObject.startY;
             width = this.gameObject.width; 
             if(this.randmoizeShape){
-                height = this.getRandomHeight() - safeFactor;
+                height = this.getRandomHeight() - SAFE_FACTOR;
             }else{  
-                height = this.gameObject.height - safeFactor;
+                height = this.gameObject.height - SAFE_FACTOR;
             }
             this.objects.push(new GameObject(this.context, startX, startY,
                  width, height, this.gameObject.color, this.gameObject.speed, this.gameObject.img));
@@ -91,9 +91,9 @@ class LowObstaclesGenerator extends ObjectGenerator{
     moveAndStretch(direction){
         this.objects.forEach((object)=>{
             object.autoMoveOneDirection(direction);
-            object.stretchVertically(obstacleMinHeight, obstacleMaxHeight, obstacleVerticalIncrement);
+            object.stretchVertically(OBSTCALE_MIN_HEIGHT, OBSTCALE_MAX_HEIGHT, OBSTCALE_VERTICAL_INCREMENT);
             // Correcting the start point of the lower obstacle
-            object.startY = gameWorldHeight - object.height;
+            object.startY = GAME_WORLD_HEIGHT - object.height;
             object.drawSprite();
         });
         // super.moveAndStretch(direction);
@@ -103,14 +103,14 @@ class LowObstaclesGenerator extends ObjectGenerator{
 
     startGeneration(timeInMilliseconds){
         let intervalID = setInterval(()=>{
-            const startX = gameWorldWidth;  
+            const startX = GAME_WORLD_WIDTH;  
             let startY, width, height;
             width = this.gameObject.width; 
             if(this.randmoizeShape){
-                height = this.getRandomHeight() - safeFactor;
-                startY = gameWorldHeight - height;
+                height = this.getRandomHeight() - SAFE_FACTOR;
+                startY = GAME_WORLD_HEIGHT - height;
             }else{  
-                height = this.gameObject.height - safeFactor;
+                height = this.gameObject.height - SAFE_FACTOR;
                 startY = this.gameObject.startY;
             }
             this.objects.push(new GameObject(this.context, startX, startY,
@@ -165,15 +165,15 @@ class ProjectileGenerator extends ObjectGenerator{
     }
 
     getRandomStartingY(){
-        const minY =  0.1 * gameWorldHeight;
-        const maxY = 0.9 * gameWorldHeight;
+        const minY =  0.1 * GAME_WORLD_HEIGHT;
+        const maxY = 0.9 * GAME_WORLD_HEIGHT;
         return Math.floor(Math.random()*(maxY-minY+1)+minY);
     }
 
     startGeneration(timeInMilliseconds){
         this.generationTime = timeInMilliseconds;
         this.generationInterva = setInterval(()=>{
-            const startX = gameWorldWidth;  
+            const startX = GAME_WORLD_WIDTH;  
             let startY, width, height;
             startY = this.getRandomStartingY();
             width = this.gameObject.width; 

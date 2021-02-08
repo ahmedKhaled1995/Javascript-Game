@@ -7,18 +7,18 @@ class Game  {
     }
 
     startGameWorld(){
-        this.canvas.width = gameWorldWidth;
-        this.canvas.height = gameWorldHeight;
+        this.canvas.width = GAME_WORLD_WIDTH;
+        this.canvas.height = GAME_WORLD_HEIGHT;
         this.canvas.style.backgroundColor = "#eee";
         document.querySelector(".canvas-area").appendChild(this.canvas);
         const img = document.querySelector("#background");
-        this.context.drawImage(img, 0, 0, gameWorldWidth, gameWorldHeight);
+        this.context.drawImage(img, 0, 0, GAME_WORLD_WIDTH, GAME_WORLD_HEIGHT);
     }
 
     clearGameWorld(){
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
         const img = document.querySelector("#background");
-        this.context.drawImage(img, 0, 0, gameWorldWidth, gameWorldHeight);
+        this.context.drawImage(img, 0, 0, GAME_WORLD_WIDTH, GAME_WORLD_HEIGHT);
     }
 
     getContext(){
