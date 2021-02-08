@@ -27,7 +27,7 @@ let lowerObstcaleGenerator = new LowObstaclesGenerator(game.getContext(), lowerO
 lowerObstcaleGenerator.startGeneration(OBSTCALE_GENERATION_SPEED);
 
 // Creating the rockets attacking the player
-let rocket = new GameObject(game.getContext(), GAME_WORLD_WIDTH, GAME_WORLD_HEIGHT/2, PROJECTILE_GENERATION_SPEED, PROJECTILE_HEIGHT,
+let rocket = new GameObject(game.getContext(), GAME_WORLD_WIDTH, GAME_WORLD_HEIGHT/2, PROJECTILE_WIDTH, PROJECTILE_HEIGHT,
  "green", PROJECTILE_SPEED, document.querySelector("#rocket"));
 let rocketGenerator = new ProjectileGenerator(game.getContext(), rocket, false);
 //rocketGenerator.hardDifficulty();

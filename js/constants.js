@@ -22,5 +22,5 @@ const SAFE_FACTOR = 5;
 
 const PROJECTILE_SPEED = 1;
 const projectileGenerationSpeed = 2000;
-const PROJECTILE_GENERATION_SPEED = 50;
+const PROJECTILE_WIDTH = 50;
 const PROJECTILE_HEIGHT = 30;
