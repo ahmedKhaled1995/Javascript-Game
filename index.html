@@ -1,24 +1,75 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>GameDemo</title>
-    <link rel="stylesheet" href="./css/style.css">
+    <!-- This style sheet is just for removing the default browsers' behaviour to start fresh -->
+    <!-- <link rel="stylesheet" href="styles/reset.css"> -->
+    <link rel="stylesheet" href="styles/space.css">
+    <link rel="stylesheet" href="styles/game-title.css">
+    <link rel="stylesheet" href="styles/buttons.css">
+    <link rel="stylesheet" href="styles/cursor.css">
+    <link rel="stylesheet" href="style.css">
+    <title>Galaxy Fighter</title>
 </head>
+
 <body>
-    <div class="canvas-area">
-
-    </div>
-    <img src="./img/background.jpg" alt="demo-background" id="background" style="display: none;">
-    <img src="./img/ship.png" alt="player" id="player" style="display: none;">
-    <img src="./img/rocket.jpg" alt="rocket" id="rocket" style="display: none;">
-
-    <script src="./js/constants.js"></script>
-    <script src="./js/game.js"></script>
-    <script src="./js/gameObject.js"></script>
-    <script src="./js/ObjectGenerator.js"></script>
-    <script src="./js/controls.js"></script>
-    <script src="./js/main.js"></script>
+    <section>
+        <!-- You can choose a rocket cursor or a colorful circle cursor, choose what you like the most -->
+        <!-- <div class="cursor colorful"></div> -->
+        <div class="cursor rocket">
+            <img src="assets/images/rocket.png">
+        </div>
+        <h2 class="title" data-value="3">Galaxy<br><span>Fighter</span></h2>
+        <div class="constellation group1"></div>
+        <div class="constellation group2"></div>
+        <div class="constellation group3"></div>
+        <div class="constellation group4"></div>
+        <div class="constellation group5"></div>
+        <div class="constellation group6"></div>
+        <!-- <div class="constellation group7"></div> -->
+        <!-- <div class="constellation group8"></div> -->
+        <!-- <div class="planets" id="planet-green" relative="-2"><img src="assets/images/planet-green.png"></div> -->
+        <div class="planets" id="planet-stone" relative="4"><img src="assets/images/planet-stone.png"></div>
+        <div class="planets" id="planet-yellow" relative="-5"><img src="assets/images/planet-yellow.png"></div>
+        <div class="planets" id="planet-purple" relative="6"><img src="assets/images/planet-purple.png"></div>
+        <div class="container-btns">
+            <a href="#" class="btn">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Start Game
+            </a>
+            <a href="#" class="btn">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Options
+            </a>
+            <a href="#" class="btn">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                How to Play
+            </a>
+            <a href="#" class="btn">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                About Us
+            </a>
+        </div>
+    </section>
+    <!-- P U T  Y O U R  D E S I R E D  S O U N D T R A C K  H E R E -->
+    <!-- <audio src="assets/sound/**SOUNDTRACK**" autoplay loop></audio> -->
+    <script src="js/cursorControl.js"></script>
+    <script src="js/parallax.js"></script>
 </body>
+
 </html>
