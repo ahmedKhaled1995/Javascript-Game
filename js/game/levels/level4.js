@@ -1,10 +1,10 @@
-import GAME_CONFIG from "./configuration.js";
-import Game from "./game.js";
-import GameObject from "./gameObject.js";
-import Controls from "./controls.js";
-import HighObstaclesGenerator from "./upperObstcaleGenerator.js";
-import LowObstaclesGenerator from "./lowerObstcaleGenerator.js";
-import ProjectileGenerator from "./projectileGenerator.js";
+import GAME_CONFIG from "../configuration.js";
+import Game from "../game.js";
+import GameObject from "../gameObject.js";
+import Controls from "../controls.js";
+import HighObstaclesGenerator from "../upperObstcaleGenerator.js";
+import LowObstaclesGenerator from "../lowerObstcaleGenerator.js";
+import ProjectileGenerator from "../projectileGenerator.js";
 
 
 // Creating the game world
@@ -36,9 +36,10 @@ let higherObstacle = new GameObject(
   GAME_CONFIG.OBSTCALE_MAX_HEIGHT - GAME_CONFIG.SAFE_FACTOR,
   GAME_CONFIG.OBSTCALE_COLOR,
   GAME_CONFIG.OBSTCALE_SPEED,
-  undefined
+  document.querySelector("#laser")
 );
 let higherObstcaleGenerator = new HighObstaclesGenerator(game.getContext(), higherObstacle, true);
+higherObstcaleGenerator.normalDifficulty();
 higherObstcaleGenerator.startGeneration(GAME_CONFIG.OBSTCALE_GENERATION_SPEED);
 
 // Creating the lower walls
@@ -50,7 +51,7 @@ let lowerObstacle = new GameObject(
   GAME_CONFIG.OBSTCALE_MAX_HEIGHT - GAME_CONFIG.SAFE_FACTOR,
   GAME_CONFIG.OBSTCALE_COLOR,
   GAME_CONFIG.OBSTCALE_SPEED,
-  undefined
+  document.querySelector("#laser")
 );
 let lowerObstcaleGenerator = new LowObstaclesGenerator(game.getContext(), lowerObstacle, true);
 lowerObstcaleGenerator.normalDifficulty();
@@ -68,7 +69,7 @@ let rocket = new GameObject(
   document.querySelector("#rocket")
 );
 let rocketGenerator = new ProjectileGenerator(game.getContext(), rocket, false);
-rocketGenerator.hardDifficulty();
+rocketGenerator.normalDifficulty();
 rocketGenerator.startGeneration(GAME_CONFIG.PROJECTILE_GENERATION_SPEED);
 
 // Updating the game world at the specified fps in the configuration file
@@ -90,7 +91,7 @@ game.update(() => {
     player.resetAcceleration();
     player.drawSprite();
 
-    lowerObstcaleGenerator.moveAndStretch("-x");
+    lowerObstcaleGenerator.moveObjects("-x");
 
     higherObstcaleGenerator.moveObjects("-x");
 

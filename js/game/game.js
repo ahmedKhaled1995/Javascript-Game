@@ -12,16 +12,16 @@ class Game  {
     startGameWorld(){
         this.canvas.width = GAME_CONFIG.GAME_WORLD_WIDTH;
         this.canvas.height = GAME_CONFIG.GAME_WORLD_HEIGHT;
-        this.canvas.style.backgroundColor = "#eee";
+        //this.canvas.style.backgroundColor = "#eee";
         document.querySelector(".canvas-area").appendChild(this.canvas);
-        const img = document.querySelector("#background");
-        this.context.drawImage(img, 0, 0, GAME_CONFIG.GAME_WORLD_WIDTH, GAME_CONFIG.GAME_WORLD_HEIGHT);
+        //const img = document.querySelector("#background");
+        //this.context.drawImage(img, 0, 0, GAME_CONFIG.GAME_WORLD_WIDTH, GAME_CONFIG.GAME_WORLD_HEIGHT);
     }
 
     clearGameWorld(){
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
-        const img = document.querySelector("#background");
-        this.context.drawImage(img, 0, 0, GAME_CONFIG.GAME_WORLD_WIDTH, GAME_CONFIG.GAME_WORLD_HEIGHT);
+        //const img = document.querySelector("#background");
+        //this.context.drawImage(document.querySelector("#background"), 0, 0, GAME_CONFIG.GAME_WORLD_WIDTH, GAME_CONFIG.GAME_WORLD_HEIGHT);
     }
 
     getContext(){

@@ -27,6 +27,21 @@ let player = new GameObject(
 let controls = new Controls(player);
 controls.setControls();
 
+// Creating the lower walls
+let lowerObstacle = new GameObject(
+  game.getContext(),
+  GAME_CONFIG.OBSTCALE_STARTING_X,
+  GAME_CONFIG.LOWER_OBSTCALE_STARTING_POINT,
+  GAME_CONFIG.OBSTCALE_WIDTH,
+  GAME_CONFIG.OBSTCALE_MAX_HEIGHT - GAME_CONFIG.SAFE_FACTOR,
+  GAME_CONFIG.OBSTCALE_COLOR,
+  GAME_CONFIG.OBSTCALE_SPEED,
+  document.querySelector("#laser")
+);
+let lowerObstcaleGenerator = new LowObstaclesGenerator(game.getContext(), lowerObstacle, true);
+lowerObstcaleGenerator.normalDifficulty();
+lowerObstcaleGenerator.startGeneration(GAME_CONFIG.OBSTCALE_GENERATION_SPEED, true);
+
 // Creating the rockets attacking the player
 let rocket = new GameObject(
   game.getContext(),
@@ -45,7 +60,7 @@ rocketGenerator.startGeneration(GAME_CONFIG.PROJECTILE_GENERATION_SPEED);
 // Updating the game world at 30 fps
 game.update(() => {
     // Checking collisions
-    if(rocketGenerator.collisionHappened(player)){
+    if(lowerObstcaleGenerator.collisionHappened(player) || rocketGenerator.collisionHappened(player)){
         game.stop();
         return;
     }
@@ -58,6 +73,8 @@ game.update(() => {
     player.accelerate();
     player.resetAcceleration();
     player.drawSprite();
+
+    lowerObstcaleGenerator.moveAndStretch("-x");
 
     rocketGenerator.moveObjects("-x");
 });

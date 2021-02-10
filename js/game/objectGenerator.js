@@ -10,15 +10,15 @@ class ObjectGenerator{
         this.objects = [this.gameObject];
         this.speed = this.gameObject.speed;
 
-        this.waveOneSpeedFactorNormal = 1;
+        this.waveOneSpeedFactorNormal = 1.5;
         this.waveOneGenerationFactorNormal = 1;
-        this.waveTwoSpeedFactorNormal = 1; 
-        this.waveTwoGenerationFactorNormal = 1;
+        this.waveTwoSpeedFactorNormal = 2; 
+        this.waveTwoGenerationFactorNormal = 1.25;
 
-        this.waveOneSpeedFactorHard = 1;
+        this.waveOneSpeedFactorHard = 2;
         this.waveOneGenerationFactorHard = 1;
-        this.waveTwoSpeedFactorHard = 1;
-        this.waveTwoGenerationFactorHard = 1;
+        this.waveTwoSpeedFactorHard = 3;
+        this.waveTwoGenerationFactorHard = 2;
     }
 
     getRandomWidth(){
