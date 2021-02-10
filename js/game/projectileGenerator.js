@@ -29,12 +29,11 @@ class ProjectileGenerator extends ObjectGenerator{
         this.generationTime = timeInMilliseconds;
         this.generationInterva = setInterval(()=>{
             const startX = GAME_CONFIG.GAME_WORLD_WIDTH;  
-            let startY, width, height;
+            let startY;
             startY = this.getRandomStartingY();
-            width = this.gameObject.width; 
-            height = this.gameObject.height;
             this.objects.push(new GameObject(this.context, startX, startY,
-                    width, height, this.gameObject.color, this.gameObject.speed, this.gameObject.img));
+                    GAME_CONFIG.PROJECTILE_WIDTH, GAME_CONFIG.PROJECTILE_HEIGHT,
+                     this.gameObject.color, this.gameObject.speed, this.gameObject.img));
         }, timeInMilliseconds);
     }
 }

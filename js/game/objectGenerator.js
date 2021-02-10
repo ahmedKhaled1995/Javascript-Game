@@ -58,6 +58,7 @@ class ObjectGenerator{
     }
 
     collisionHappened(gameObject){
+
         for(let i = 0; i < this.objects.length; i++){
             if(gameObject.hasCrashed(this.objects[i])){
                 return true;
