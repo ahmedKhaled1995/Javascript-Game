@@ -2,9 +2,9 @@ import GAME_CONFIG from "../configuration.js";
 import Game from "../game.js";
 import GameObject from "../gameObject.js";
 import Controls from "../controls.js";
-import HighObstaclesGenerator from "../upperObstcaleGenerator.js";
 import LowObstaclesGenerator from "../lowerObstcaleGenerator.js";
 import ProjectileGenerator from "../projectileGenerator.js";
+import Player from "../player.js";
 
 
 // Creating the game world
@@ -12,7 +12,7 @@ let game = new Game(document.createElement("canvas"));
 game.startGameWorld();
 
 // Creaing the player controlled character
-let player = new GameObject(
+let player = new Player(
   game.getContext(),
   GAME_CONFIG.PLAYER_STARTING_X,
   GAME_CONFIG.PLAYER_STARTING_Y,
@@ -65,6 +65,9 @@ game.update(() => {
         return;
     }
 
+    // Handling collision between player projectiles and enemy projectiles
+    player.handleShotsCollision(rocketGenerator.objects);
+
     // Clearing game world
     game.clearGameWorld();
 
@@ -73,6 +76,7 @@ game.update(() => {
     player.accelerate();
     player.resetAcceleration();
     player.drawSprite();
+    player.moveShots();
 
     lowerObstcaleGenerator.moveAndStretch("-x");
 

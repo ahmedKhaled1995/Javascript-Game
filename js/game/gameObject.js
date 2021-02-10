@@ -19,9 +19,9 @@ class GameObject{
         this.context.fillStyle = this.color;
         this.context.strokeStyle= this.color;
         this.context.beginPath();
-        this.context.fillRect(this.startX, this.startY, this.width, this.height);
-        //this.context.rect(this.startX, this.startY, this.width, this.height);
-        //this.context.stroke();
+        //this.context.fillRect(this.startX, this.startY, this.width, this.height);
+        this.context.rect(this.startX, this.startY, this.width, this.height);
+        this.context.stroke();
     }
 
     drawSprite(){
@@ -29,7 +29,19 @@ class GameObject{
             this.drawObject();
         }else{
             this.context.drawImage(this.img, this.startX, this.startY, this.width, this.height);
+            this.context.beginPath();
+            //this.context.fillRect(this.startX, this.startY, this.width, this.height);
+            this.context.rect(this.startX, this.startY, this.width, this.height);
+            this.context.stroke();
         }
+    }
+
+    clearObject(){
+        //this.context.clearRect(this.startX, this.startY, this.width, this.height);
+        this.width = 0;
+        this.height = 0;
+        this.startX = 0;
+        this.startY = 0;
     }
 
     accelerate(){
@@ -40,18 +52,6 @@ class GameObject{
     resetAcceleration() {
         this.speedX = 0;
         this.speedY = 0;
-    }
-
-    checkAcceleration(){
-        if (this.keys && this.keys[37]) { // left arrow
-            this.speedX = -this.speed; 
-        }if (this.keys && this.keys[39]) { // right arrow
-            this.speedX = this.speed; 
-        }if (this.keys && this.keys[38]) { // up arrow
-            this.speedY = -this.speed; 
-        }if (this.keys && this.keys[40]) { // down arrow
-            this.speedY = this.speed; 
-        }   
     }
 
     autoMoveOneDirection(direction){
