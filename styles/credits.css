@@ -1,0 +1,102 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,500;1,700&display=swap');
+
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: 'Poppins', sans-serif;
+}
+html {
+    font-family: sans-serif;
+    font-size: 10px;
+}
+body {
+    width: 100%;
+    min-height: 100vh;
+    font-size: 1.6rem;
+    line-height: 140%;
+    background-color: #7289da;
+    background-image: url("../assets/images/background-gif.gif");
+    background-attachment: fixed;
+    background-size: cover;
+    background-repeat: no-repeat;
+    display: grid;
+    place-items: center;
+    user-select: none;
+    perspective: 1000px;
+}
+
+::-webkit-scrollbar{
+    display: none;
+}
+
+.card {
+    margin-top: 10rem;
+    margin-bottom: 10rem;
+    background: rgba(35, 39, 42, 0.75);
+    color: #333;
+    box-shadow: 0px 5px 10px 5px rgba(0, 0, 0, 0.25);
+    width: 90%;
+    max-width: 50rem;
+    min-height: 30rem;
+    border-radius: 2rem;
+}
+
+.hero {
+    display: flex;
+    justify-content: center;
+    pointer-events: none;
+    transform: translateY(-50%);
+}
+.hero .img {
+    width: 100px;
+    transform: rotateZ(-45deg);
+    transition: all 0.5s ease-in-out;
+}
+
+.card:hover .img{
+    transform: rotateZ(15deg);
+    filter: drop-shadow(0rem 1.5rem rgba(0, 0, 0, 0.5));
+    transition: all 0.5s ease-in-out;
+}
+
+.title {
+    transition: all 0.5 ease;
+    transform-style: preserve-3d;
+    text-align: center;
+    font-size: 5rem;
+    padding: 1rem;
+    color: #c4c3c7;
+    line-height: 5rem;
+    text-shadow: 0 5px rgba(0, 0, 0, 0.5);
+}
+
+
+.acc-container {
+    padding: 4rem 2rem;
+}
+.acc-btn {
+    width: 100%;
+    color: #c3c4c7;
+    padding: 1.6rem 2rem;
+    font-size: 1.6rem;
+    cursor: pointer;
+    background: inherit;
+    border: none;
+    outline: none;
+    text-align: left;
+    transition: all 0.2s linear;
+}
+.acc-btn:after {
+    content: url("../assets/images/linkedin-icon.png");
+    color: #faea0c;
+    float: right;
+    transition: all 0.3s linear;
+}
+
+.acc-btn:hover {
+    color: #fff;
+    font-weight: 400;
+    transform: rotateY(15deg);
+    transition: all 0.2s linear;
+}
