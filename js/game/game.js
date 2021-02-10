@@ -14,6 +14,7 @@ class Game  {
         this.canvas.height = GAME_CONFIG.GAME_WORLD_HEIGHT;
         //this.canvas.style.backgroundColor = "#eee";
         document.querySelector(".canvas-area").appendChild(this.canvas);
+        document.querySelector(".canvas-area").setAttribute('style', `background-size: ${this.canvas.width}px ${this.canvas.height}px`);;
         //const img = document.querySelector("#background");
         //this.context.drawImage(img, 0, 0, GAME_CONFIG.GAME_WORLD_WIDTH, GAME_CONFIG.GAME_WORLD_HEIGHT);
     }
