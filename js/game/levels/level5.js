@@ -23,6 +23,9 @@ let player = new Player(
   GAME_CONFIG.PLAYER_SPEED,
   document.querySelector("#player")
 );
+const playerCollisionHeight = player.height - (2 * (0.4 * player.height));
+const playerCollisionStartY = player.startY + (0.4 * player.height);
+player.setCollisionHeightAndStartY(playerCollisionHeight, playerCollisionStartY);
 
 // Initializing controls on the player character
 let controls = new Controls(player);
@@ -31,7 +34,7 @@ controls.setControls();
 // Creating the upper walls
 let higherObstacle = new GameObject(
   game.getContext(),
-  GAME_CONFIG.OBSTCALE_STARTING_X,
+  GAME_CONFIG.GAME_WORLD_WIDTH,
   GAME_CONFIG.HEIGHER_OBSTCALE_STARTING_POINT,
   GAME_CONFIG.OBSTCALE_WIDTH, 
   GAME_CONFIG.OBSTCALE_MAX_HEIGHT - GAME_CONFIG.SAFE_FACTOR,
@@ -46,7 +49,7 @@ higherObstcaleGenerator.startGeneration(GAME_CONFIG.OBSTCALE_GENERATION_SPEED);
 // Creating the lower walls
 let lowerObstacle = new GameObject(
   game.getContext(),
-  GAME_CONFIG.OBSTCALE_STARTING_X,
+  GAME_CONFIG.GAME_WORLD_WIDTH,
   GAME_CONFIG.LOWER_OBSTCALE_STARTING_POINT,
   GAME_CONFIG.OBSTCALE_WIDTH,
   GAME_CONFIG.OBSTCALE_MAX_HEIGHT - GAME_CONFIG.SAFE_FACTOR,
@@ -69,6 +72,9 @@ let rocket = new GameObject(
   GAME_CONFIG.PROJECTILE_SPEED,
   document.querySelector("#rocket")
 );
+const rocketCollisionHeight = rocket.height - (2 * (0.4 * rocket.height));
+const rocketCollisionStartY = rocket.startY + (0.4 * rocket.height);
+rocket.setCollisionHeightAndStartY(rocketCollisionHeight, rocketCollisionStartY);
 let rocketGenerator = new ProjectileGenerator(game.getContext(), rocket, false);
 rocketGenerator.normalDifficulty();
 rocketGenerator.startGeneration(GAME_CONFIG.PROJECTILE_GENERATION_SPEED);
@@ -84,7 +90,7 @@ game.update(() => {
     }
 
     // Handling collision between player projectiles and enemy projectiles
-    player.handleShotsCollision(rocketGenerator.objects);
+    player.handleShotsCollision(rocketGenerator.objectMap);
     
     // Clearing game world
     game.clearGameWorld();

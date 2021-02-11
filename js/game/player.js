@@ -8,15 +8,18 @@ class Player extends GameObject {
 
     constructor(context, startX, startY, width, height, color, speed, img){
         super(context, startX, startY, width, height, color, speed, img);
-        this.collisionHeight = 0.6 * this.height;
 
-        this.shots = [];
+        // Objects generation maps 
+        this.shotsCount = 1;
+        this.shotMap = {};   // index : shot
+
         this.allowFire = true;
     }
 
     accelerate(){
         this.startX += this.speedX;
         this.startY += this.speedY;
+        this.collisionStartY += this.speedY;
     }
 
     checkAcceleration(){
@@ -41,7 +44,7 @@ class Player extends GameObject {
     fire(){
         if(this.allowFire){
             this.allowFire = false;
-            this.shots.push(new GameObject(
+            const shot = new GameObject(
                 this.context,
                 this.startX + this.width,
                 this.startY + (0.5 * this.height),
@@ -50,25 +53,28 @@ class Player extends GameObject {
                 this.color,
                 GAME_CONFIG.PLAYER_PROJECTILE_SPEED,
                 player_laser
-            ));
+            );
+            this.shotMap[this.shotsCount] = shot; 
+            this.shotsCount += 1;
             setTimeout(()=>this.allowFire = true, GAME_CONFIG.PLAYER_PROJECTILE_COOLDOWNTIME * 1000)
         }
-        
     }
 
     moveShots(){
-        this.shots.forEach((shot)=>{
-            shot.autoMoveOneDirection("+x");
-            shot.drawSprite();
-        });
+        for (const index in this.shotMap) {
+            this.shotMap[index].autoMoveOneDirection("+x");
+            this.shotMap[index].drawSprite();
+        }
     }
 
     handleShotsCollision(gameObjects){
-        for(let i = 0; i < this.shots.length; i++){
-            for(let j = 0; j < gameObjects.length; j++){
-                if(this.shots[i].hasCrashed(gameObjects[j])){
-                    this.shots[i].clearObject();
-                    gameObjects[j].clearObject();
+        for (const indexShot in this.shotMap) {
+            for (const indexObject in gameObjects) {
+                if(this.shotMap[indexShot].hasCrashed(gameObjects[indexObject])){
+                    this.shotMap[indexShot].clearObject();
+                    gameObjects[indexObject].clearObject();
+                    delete this.shotMap[indexShot];
+                    break; // We have to break or we get an error because the object has been deleted
                 }
             }
         }

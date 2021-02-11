@@ -2,12 +2,18 @@ import GAME_CONFIG from "./configuration.js";
 
 
 class ObjectGenerator{
+
     constructor(context, gameObject, randmoizeShape){
         this.context = context;
         this.gameObject = gameObject;
         this.randmoizeShape = randmoizeShape;
 
-        this.objects = [this.gameObject];
+        // Objects generation maps 
+        this.generationCount = 1;
+        this.objectMap = {};   // index : object
+        this.objectMap[this.generationCount] = this.gameObject;
+        this.generationCount += 1;
+
         this.speed = this.gameObject.speed;
 
         this.waveOneSpeedFactorNormal = 1.5;
@@ -34,37 +40,45 @@ class ObjectGenerator{
     }
 
     moveObjects(direction){
-        this.objects.forEach((object)=>{
-            object.autoMoveOneDirection(direction);
-            object.drawSprite();
-        });
+        for (const index in this.objectMap) {
+            this.objectMap[index].autoMoveOneDirection(direction);
+            this.objectMap[index].drawSprite();
+        }
     }
 
     stretchObjectsVertically(){
-        this.objects.forEach((object)=>{
-            object.stretchVertically(GAME_CONFIG.OBSTCALE_MIN_HEIGHT, GAME_CONFIG.OBSTCALE_MAX_HEIGHT,
+        for (const index in this.objectMap) {
+            this.objectMap[index].stretchVertically(GAME_CONFIG.OBSTCALE_MIN_HEIGHT, GAME_CONFIG.OBSTCALE_MAX_HEIGHT,
                 GAME_CONFIG.OBSTCALE_VERTICAL_INCREMENT);
-            object.drawSprite();
-        });
+            this.objectMap[index].drawSprite();
+        }
     }
 
     moveAndStretch(direction){
-        this.objects.forEach((object)=>{
-            object.autoMoveOneDirection(direction);
-            object.stretchVertically(GAME_CONFIG.OBSTCALE_MIN_HEIGHT, GAME_CONFIG.OBSTCALE_MAX_HEIGHT,
+        for (const index in this.objectMap) {
+            this.objectMap[index].autoMoveOneDirection(direction);
+            this.objectMap[index].stretchVertically(GAME_CONFIG.OBSTCALE_MIN_HEIGHT, GAME_CONFIG.OBSTCALE_MAX_HEIGHT,
                 GAME_CONFIG.OBSTCALE_VERTICAL_INCREMENT);
-            object.drawSprite();
-        });
+            this.objectMap[index].drawSprite();
+        }
     }
 
     collisionHappened(gameObject){
-
-        for(let i = 0; i < this.objects.length; i++){
-            if(gameObject.hasCrashed(this.objects[i])){
+        for (const index in this.objectMap) {
+            if(gameObject.hasCrashed(this.objectMap[index])){
                 return true;
             }
         }
         return false;
+    }
+
+    removeOutOfBoundriesObjects(){
+        for (const index in this.objectMap) {
+           if(this.objectMap[index].isOutOfBoundries()){
+                delete this.objectMap[index];
+                console.log(Object.keys(this.objectMap).length);
+           }
+        }
     }
 
     normalDifficulty(){
@@ -95,9 +109,9 @@ class ObjectGenerator{
         console.log("difficulty increased");
         // Increase projectile spped
         this.speed *= speedFactor;
-        this.objects.forEach((item)=>{
-            item.speed = this.speed;
-        });
+        for (const index in this.objectMap) {
+            this.objectMap[index].speed = this.speed;
+        }
         // Increase projectile generation
         clearInterval(this.generationInterva);
         this.startGeneration(this.generationTime/generationFactor);

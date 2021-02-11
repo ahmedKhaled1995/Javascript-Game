@@ -29,11 +29,27 @@ class ProjectileGenerator extends ObjectGenerator{
         this.generationTime = timeInMilliseconds;
         this.generationInterva = setInterval(()=>{
             const startX = GAME_CONFIG.GAME_WORLD_WIDTH;  
-            let startY;
-            startY = this.getRandomStartingY();
-            this.objects.push(new GameObject(this.context, startX, startY,
-                    GAME_CONFIG.PROJECTILE_WIDTH, GAME_CONFIG.PROJECTILE_HEIGHT,
-                     this.gameObject.color, this.gameObject.speed, this.gameObject.img));
+            const startY = this.getRandomStartingY();
+
+            const rocket = new GameObject(
+                this.context,
+                startX,
+                startY,
+                GAME_CONFIG.PROJECTILE_WIDTH,
+                GAME_CONFIG.PROJECTILE_HEIGHT,
+                this.gameObject.color,
+                this.gameObject.speed,
+                this.gameObject.img
+            );
+            const rocketCollisionHeight = rocket.height - (2 * (0.4 * rocket.height));
+            const rocketCollisionStartY = rocket.startY + (0.4 * rocket.height);
+            rocket.setCollisionHeightAndStartY(rocketCollisionHeight, rocketCollisionStartY);
+
+            this.objectMap[this.generationCount] = rocket;
+            this.generationCount += 1;
+            
+            // Checking out of boundries objects
+            this.removeOutOfBoundriesObjects();
         }, timeInMilliseconds);
     }
 }

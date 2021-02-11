@@ -11,14 +11,15 @@ class LowObstaclesGenerator extends ObjectGenerator{
 
     /* Note that method is overriden */ 
     moveAndStretch(direction){
-        this.objects.forEach((object)=>{
-            object.autoMoveOneDirection(direction);
-            object.stretchVertically(GAME_CONFIG.OBSTCALE_MIN_HEIGHT, GAME_CONFIG.OBSTCALE_MAX_HEIGHT,
+        for (const index in this.objectMap) {
+            this.objectMap[index].autoMoveOneDirection(direction);
+            this.objectMap[index].stretchVertically(GAME_CONFIG.OBSTCALE_MIN_HEIGHT, GAME_CONFIG.OBSTCALE_MAX_HEIGHT,
                 GAME_CONFIG.OBSTCALE_VERTICAL_INCREMENT);
             // Correcting the start point of the lower obstacle
-            object.startY = GAME_CONFIG.GAME_WORLD_HEIGHT - object.height;
-            object.drawSprite();
-        });
+            this.objectMap[index].startY = GAME_CONFIG.GAME_WORLD_HEIGHT - this.objectMap[index].height;
+            this.objectMap[index].collisionStartY = GAME_CONFIG.GAME_WORLD_HEIGHT - this.objectMap[index].height;
+            this.objectMap[index].drawSprite();
+        }
         // super.moveAndStretch(direction);
         // //Correcting the start point of the lower obstacle
         // object.startY = gameWorldHeight - object.height;
@@ -37,8 +38,12 @@ class LowObstaclesGenerator extends ObjectGenerator{
                 height = this.gameObject.height - GAME_CONFIG.SAFE_FACTOR;
                 startY = this.gameObject.startY;
             }
-            this.objects.push(new GameObject(this.context, startX, startY,
-                 width, height, this.gameObject.color, this.gameObject.speed, this.gameObject.img));
+            const generatedObject = new GameObject(this.context, startX, startY,
+                width, height, this.gameObject.color, this.gameObject.speed, this.gameObject.img);
+            this.objectMap[this.generationCount] = generatedObject;
+            this.generationCount += 1;
+            // Checking out of boundries objects
+            this.removeOutOfBoundriesObjects();
         }, timeInMilliseconds);
     }
 }
