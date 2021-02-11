@@ -89,7 +89,6 @@ body {
 }
 .acc-btn:after {
     content: url("../assets/images/linkedin-icon.png");
-    color: #faea0c;
     float: right;
     transition: all 0.3s linear;
 }
