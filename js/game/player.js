@@ -6,9 +6,15 @@ class Player extends GameObject {
 
     constructor(context, startX, startY, width, height, color, speed, img){
         super(context, startX, startY, width, height, color, speed, img);
+        this.collisionHeight = 0.6 * this.height;
 
         this.shots = [];
         this.allowFire = true;
+    }
+
+    accelerate(){
+        this.startX += this.speedX;
+        this.startY += this.speedY;
     }
 
     checkAcceleration(){
@@ -23,6 +29,11 @@ class Player extends GameObject {
         }if (this.keys && this.keys[32]) { // space
             this.fire();
         }   
+    }
+
+    resetAcceleration() {
+        this.speedX = 0;
+        this.speedY = 0;
     }
 
     fire(){
@@ -51,14 +62,11 @@ class Player extends GameObject {
     }
 
     handleShotsCollision(gameObjects){
-        //console.log(this.shots);
         for(let i = 0; i < this.shots.length; i++){
-            //console.log("foo");
             for(let j = 0; j < gameObjects.length; j++){
                 if(this.shots[i].hasCrashed(gameObjects[j])){
                     this.shots[i].clearObject();
                     gameObjects[j].clearObject();
-                    //console.log("collision happened");
                 }
             }
         }

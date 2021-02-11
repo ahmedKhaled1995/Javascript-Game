@@ -12,6 +12,7 @@ class GameObject{
 
         this.speedX = 0;
         this.speedY = 0;
+        this.collisionHeight = this.height;
         this.keys = [];
     }
 
@@ -44,16 +45,6 @@ class GameObject{
         this.startY = 0;
     }
 
-    accelerate(){
-        this.startX += this.speedX;
-        this.startY += this.speedY;
-    }
-
-    resetAcceleration() {
-        this.speedX = 0;
-        this.speedY = 0;
-    }
-
     autoMoveOneDirection(direction){
         if(direction === "+x"){
             this.moveRight();
@@ -84,23 +75,22 @@ class GameObject{
 
     stretchVertically(minHeight, maxHeight, increment){
         if(this.height > maxHeight){
-            //increment *= -1;
             this.height = minHeight;
         }
         this.height += increment;
     }
 
     hasCrashed(otherGameObject){
-        let thisLeft = this.startX;
-        let thisRight = this.startX + this.width;
-        let thisTop = this.startY;
-        let thisBottom = this.startY + this.height;
-        let otherLeft = otherGameObject.startX;
-        let otherRight = otherGameObject.startX + otherGameObject.width;
-        let otherTop = otherGameObject.startY;
-        let otherBottom = otherGameObject.startY + otherGameObject.height;
+        const thisLeft = this.startX;
+        const thisRight = this.startX + this.width;
+        const thisTop = this.startY;
+        const thisBottom = this.startY + this.collisionHeight;
+        const otherLeft = otherGameObject.startX;
+        const otherRight = otherGameObject.startX + otherGameObject.width;
+        const otherTop = otherGameObject.startY;
+        const otherBottom = otherGameObject.startY + otherGameObject.collisionHeight;
         let crash = true;
-        if ( thisBottom < otherTop) {
+        if (thisBottom < otherTop) {
             crash = false;
         } if(thisTop > otherBottom) {
             crash = false;
