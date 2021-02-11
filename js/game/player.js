@@ -12,13 +12,13 @@ class Player extends GameObject {
     }
 
     checkAcceleration(){
-        if (this.keys && this.keys[37]) { // left arrow
+        if (this.keys && this.keys[37] && this.startX >= 0) { // left arrow
             this.speedX = -this.speed; 
-        }if (this.keys && this.keys[39]) { // right arrow
+        }if (this.keys && this.keys[39] && this.startX + GAME_CONFIG.PLAYER_WIDTH <= GAME_CONFIG.GAME_WORLD_WIDTH) { // right arrow
             this.speedX = this.speed; 
-        }if (this.keys && this.keys[38]) { // up arrow
+        }if (this.keys && this.keys[38] && this.startY >= 0) { // up arrow
             this.speedY = -this.speed; 
-        }if (this.keys && this.keys[40]) { // down arrow
+        }if (this.keys && this.keys[40] && this.startY + GAME_CONFIG.PLAYER_HEIGHT <= GAME_CONFIG.GAME_WORLD_HEIGHT) { // down arrow
             this.speedY = this.speed; 
         }if (this.keys && this.keys[32]) { // space
             this.fire();
