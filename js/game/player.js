@@ -4,6 +4,8 @@ import GameObject from "./gameObject.js";
 
 class Player extends GameObject {
 
+    static player_laser = document.querySelector("#player_laser");
+
     constructor(context, startX, startY, width, height, color, speed, img){
         super(context, startX, startY, width, height, color, speed, img);
         this.collisionHeight = 0.6 * this.height;
@@ -47,7 +49,7 @@ class Player extends GameObject {
                 GAME_CONFIG.PROJECTILE_HEIGHT,
                 this.color,
                 GAME_CONFIG.PLAYER_PROJECTILE_SPEED,
-                document.querySelector("#player_laser")
+                player_laser
             ));
             setTimeout(()=>this.allowFire = true, GAME_CONFIG.PLAYER_PROJECTILE_COOLDOWNTIME * 1000)
         }
