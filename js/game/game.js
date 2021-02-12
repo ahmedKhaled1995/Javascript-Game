@@ -22,20 +22,19 @@ class Game  {
 
     drawDamageTaken(){
         this.context.fillStyle = "crimson";
-        let fontSize = 1;
-        this.context.font = `${fontSize}px Arial`;
+        let count = 1;
         let id = setInterval(()=>{
             this.context.fillText(
                 `-${parseInt(GAME_CONFIG.PLAYER_TAKEN_DAMAGE)}`,
                 GAME_CONFIG.GAME_WORLD_WIDTH - (0.15 * GAME_CONFIG.GAME_WORLD_WIDTH ),
                 0.18 * GAME_CONFIG.GAME_WORLD_HEIGHT
             );
-            fontSize += 1;            
-            if(fontSize >= 30){
+            count += 1;            
+            if(count >= 50){
                 clearInterval(id);
             }
 
-        }, 0.03 * 1000);
+        }, 0.001 * 1000);
     }
 
     drawScore(gameObject){
@@ -51,19 +50,18 @@ class Game  {
 
     drawBonus(bonus){
         this.context.fillStyle = "crimson";
-        let fontSize = 1;
-        this.context.font = `${fontSize}px Arial`;
+        let count = 1;
         let id = setInterval(()=>{
             this.context.fillText(
                 `+${parseInt(bonus)}`,
                 0.135 * GAME_CONFIG.GAME_WORLD_WIDTH,
                 0.18 * GAME_CONFIG.GAME_WORLD_HEIGHT
             );
-            fontSize += 1;
-            if(fontSize >= 30){
+            count += 1;
+            if(count >= 50){
                 clearInterval(id);
             }
-        }, 0.03 * 1000);
+        }, 0.001 * 1000);
     }
 
     gameOver(){
