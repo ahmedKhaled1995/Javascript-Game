@@ -1,0 +1,125 @@
+section .title{
+    font-size: 60px;
+    letter-spacing: 44px;
+    transition: 1s;
+    cursor: none;
+  }
+  
+  section .title span{
+    font-size: 32px;
+    letter-spacing: 22px;
+  }
+
+.bg {
+    width: 100%;
+    height: 100vh;
+    margin-top: 22vh;
+    /* background: url(https://i.pinimg.com/originals/d7/d8/db/d7d8dbf3811c797e5d2cc364743ae3a7.gif); */
+    background-repeat: no-repeat;
+    background-size: cover;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+/* nav {
+    background: linear-gradient(rgba(0, 0, 0, 0.3), rgba(0, 0, 0, 0.4));
+    height: 10vh;
+    width: 100%;
+    position: fixed;
+    display: flex;
+    align-items: center;
+    box-shadow: 0 5px 5px rgba(0, 0, 0, 0), 0 1px 2px rgba(0, 0, 0, 0);
+
+} */
+
+/* nav ul li {
+    list-style: none;
+    display: inline-block;
+    margin-right: 3vh;
+}
+
+nav ul li a {
+    text-decoration: none;
+    color: #fff;
+} */
+
+.content {
+    width: 80%;
+    height: 70%;
+    position: fixed;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.type {
+    margin: 10px;
+    width: 28%;
+    height: 90%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-wrap: wrap;
+    border-radius: 10px;
+    overflow: hidden;
+    opacity: 0.8;
+    transition: 0.3s ease;
+}
+
+.type:hover {
+    width: 30%;
+    height: 100%;
+}
+
+.type:hover img {
+    transform: rotate(30deg);
+}
+
+.type .img-part {
+    width: 100%;
+    height: 60%;
+    background: #2c3e50;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.type .img-part img {
+    width: 60%;
+    transition: 2.5s ease;
+}
+
+.type .name-part {
+    width: 100%;
+    height: 10%;
+    background: #fff;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+}
+
+.name-part span {
+    font-size: 20px;
+    color: rgb(121, 121, 121);
+    font-weight: bold;
+    letter-spacing: 6px;
+    text-transform: uppercase;
+}
+
+.type .desc-part {
+    width: 100%;
+    height: 30%;
+    background: #f0f0f0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: #333;
+}
+
+.type .desc-part p {
+    width: 80%;
+    height: auto;
+}
+
