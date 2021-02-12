@@ -24,7 +24,7 @@ class HighObstaclesGenerator extends ObjectGenerator{
             }
 
             const generatedObject = new GameObject(this.context, startX, startY,
-                width, height, this.gameObject.color, this.gameObject.speed, this.gameObject.img);
+                width, height, this.gameObject.color, this.speed, this.gameObject.img);
             this.objectMap[this.generationCount] = generatedObject;
             this.generationCount += 1;
             // Checking out of boundries objects

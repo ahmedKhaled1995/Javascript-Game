@@ -5,6 +5,11 @@ import Controls from "../controls.js";
 import HighObstaclesGenerator from "../upperObstcaleGenerator.js";
 import Player from "../player.js";
 import ProjectileGenerator from "../projectileGenerator.js";
+import Engine from "../engine.js";
+
+
+// Creating engine
+const engine = new Engine();
 
 
 // Creating the game world
@@ -13,7 +18,7 @@ game.startGameWorld();
 
 // Creaing the player controlled character
 let player = new Player(
-  game.getContext(),
+  game.context,
   GAME_CONFIG.PLAYER_STARTING_X,
   GAME_CONFIG.PLAYER_STARTING_Y,
   GAME_CONFIG.PLAYER_WIDTH,
@@ -32,7 +37,7 @@ controls.setControls();
 
 // Creating the upper walls
 let higherObstacle = new GameObject(
-    game.getContext(),
+    game.context,
     GAME_CONFIG.GAME_WORLD_WIDTH,
     GAME_CONFIG.HEIGHER_OBSTCALE_STARTING_POINT,
     GAME_CONFIG.OBSTCALE_WIDTH, 
@@ -41,12 +46,12 @@ let higherObstacle = new GameObject(
     GAME_CONFIG.OBSTCALE_SPEED,
     document.querySelector("#laser")
   );
-  let higherObstcaleGenerator = new HighObstaclesGenerator(game.getContext(), higherObstacle, true);
+  let higherObstcaleGenerator = new HighObstaclesGenerator(game.context, higherObstacle, true);
   higherObstcaleGenerator.startGeneration(GAME_CONFIG.OBSTCALE_GENERATION_SPEED);
 
 // Creating the rockets attacking the player
 let rocket = new GameObject(
-  game.getContext(),
+  game.context,
   GAME_CONFIG.GAME_WORLD_WIDTH, 
   GAME_CONFIG.GAME_WORLD_HEIGHT/2,
   GAME_CONFIG.PROJECTILE_WIDTH,
@@ -58,32 +63,52 @@ let rocket = new GameObject(
 const rocketCollisionHeight = rocket.height - (2 * (0.4 * rocket.height));
 const rocketCollisionStartY = rocket.startY + (0.4 * rocket.height);
 rocket.setCollisionHeightAndStartY(rocketCollisionHeight, rocketCollisionStartY);
-let rocketGenerator = new ProjectileGenerator(game.getContext(), rocket, false);
+let rocketGenerator = new ProjectileGenerator(game.context, rocket, false);
 rocketGenerator.normalDifficulty();
 rocketGenerator.startGeneration(GAME_CONFIG.PROJECTILE_GENERATION_SPEED);
 
 // Updating the game world at 30 fps
-game.update(() => {
-    // Checking collisions
-    if(higherObstcaleGenerator.collisionHappened(player) || rocketGenerator.collisionHappened(player)){
-        game.stop();
-        return;
-    }
-
-    // Handling collision between player projectiles and enemy projectiles
-    player.handleShotsCollision(rocketGenerator.objectMap);
-
+engine.update(() => {
     // Clearing game world
     game.clearGameWorld();
 
-    // Updating the game world
+    // Checking game over
+    if(player.lifes <= 0){
+      engine.stop();
+      game.gameOver();
+    }
+
+    // Checking collisions
+    if(rocketGenerator.collisionHappened(player) || higherObstcaleGenerator.collisionHappened(player)){
+        player.takeDamage();
+        if(player.lifes > 0){  // We check because when the player dies, I don't want to draw the bonus
+          game.drawDamageTaken();
+        }
+    }
+
+    // Handling collision between player projectiles and enemy projectiles
+    const playerShotCollisionInfo = player.getPlayerShotCollisionInfo(rocketGenerator.objectMap);
+    if(playerShotCollisionInfo != null){
+      player.shotMap[playerShotCollisionInfo.indexShot].clearObject();
+      rocketGenerator.objectMap[playerShotCollisionInfo.indexObject].clearObject();
+      delete player.shotMap[playerShotCollisionInfo.indexShot];
+      player.increaseScore(GAME_CONFIG.PLAYER_SCORE_BONUS);
+      game.drawBonus(GAME_CONFIG.PLAYER_SCORE_BONUS);
+    }
+
+    // Updating rocket generator and obstcales 
+    rocketGenerator.moveObjects("-x");
+    higherObstcaleGenerator.moveAndStretch("-x");
+
+    // Updating player
     player.checkAcceleration();
     player.accelerate();
     player.resetAcceleration();
     player.drawSprite();
     player.moveShots();
+    player.increaseScore(.05);
 
-    higherObstcaleGenerator.moveAndStretch("-x");
-
-    rocketGenerator.moveObjects("-x");
+    // Updating UI
+    game.drawScore(player);
+    game.drawLifes(player);
 });

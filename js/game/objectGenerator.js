@@ -76,13 +76,13 @@ class ObjectGenerator{
         for (const index in this.objectMap) {
            if(this.objectMap[index].isOutOfBoundries()){
                 delete this.objectMap[index];
-                console.log(Object.keys(this.objectMap).length);
+                //console.log(Object.keys(this.objectMap).length);
            }
         }
     }
 
     normalDifficulty(){
-        const timeToDifficultySpike = 5 * 1000;
+        const timeToDifficultySpike = GAME_CONFIG.TIME_FOR_DIFFICULTY_TO_SPIKE * 1000;
         // Difficulty spike one
         setTimeout(()=>{
             this.modifyGameDifficulty(this.waveOneSpeedFactorNormal, this.waveOneGenerationFactorNormal);
@@ -94,7 +94,7 @@ class ObjectGenerator{
     }
 
     hardDifficulty(){
-        const timeToDifficultySpike = 5 * 1000;
+        const timeToDifficultySpike = GAME_CONFIG.TIME_FOR_DIFFICULTY_TO_SPIKE * 1000;
         // Difficulty spike one
         setTimeout(()=>{
             this.modifyGameDifficulty(this.waveOneSpeedFactorHard, this.waveOneGenerationFactorHard);

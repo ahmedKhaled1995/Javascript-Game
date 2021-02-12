@@ -14,6 +14,15 @@ class Player extends GameObject {
         this.shotMap = {};   // index : shot
 
         this.allowFire = true;
+
+        this.lifes = GAME_CONFIG.PLAYER_LIFES;
+        this.invisible = false;
+
+        this.score = 0;
+    }
+
+    increaseScore(score){
+        this.score += score;
     }
 
     accelerate(){
@@ -67,17 +76,26 @@ class Player extends GameObject {
         }
     }
 
-    handleShotsCollision(gameObjects){
+    takeDamage(){
+        if(!this.invisible){
+            this.lifes -= GAME_CONFIG.PLAYER_TAKEN_DAMAGE;
+            this.invisible = true;
+            setTimeout(() => this.invisible = false, 1 * 1000);
+        }
+    }
+
+    getPlayerShotCollisionInfo(gameObjects){
         for (const indexShot in this.shotMap) {
             for (const indexObject in gameObjects) {
                 if(this.shotMap[indexShot].hasCrashed(gameObjects[indexObject])){
-                    this.shotMap[indexShot].clearObject();
-                    gameObjects[indexObject].clearObject();
-                    delete this.shotMap[indexShot];
-                    break; // We have to break or we get an error because the object has been deleted
+                    return {
+                        indexShot,
+                        indexObject
+                    }; 
                 }
             }
         }
+        return null;
     }
 }
 

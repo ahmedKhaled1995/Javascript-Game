@@ -38,13 +38,14 @@ class ProjectileGenerator extends ObjectGenerator{
                 GAME_CONFIG.PROJECTILE_WIDTH,
                 GAME_CONFIG.PROJECTILE_HEIGHT,
                 this.gameObject.color,
-                this.gameObject.speed,
+                this.speed,
                 this.gameObject.img
             );
             const rocketCollisionHeight = rocket.height - (2 * (0.4 * rocket.height));
             const rocketCollisionStartY = rocket.startY + (0.4 * rocket.height);
             rocket.setCollisionHeightAndStartY(rocketCollisionHeight, rocketCollisionStartY);
-
+            
+            console.log(rocket.speed);
             this.objectMap[this.generationCount] = rocket;
             this.generationCount += 1;
             
