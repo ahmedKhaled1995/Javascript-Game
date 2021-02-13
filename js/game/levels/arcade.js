@@ -9,9 +9,19 @@ import ProjectileGenerator from "../projectileGenerator.js";
 import Engine from "../engine.js";
 
 
+// Getting the query params to know player's ship and difficulty setting 
+const urlParams = new URLSearchParams(window.location.search);
+let playerShip = document.querySelector("#player1");
+let avatar = "Pillar Of Autumn";
+avatar = urlParams.get('avatar');
+if(avatar === "Millennium Falcon"){
+  playerShip = document.querySelector("#player2");
+}else if(avatar === "USS Enterprise"){
+  playerShip = document.querySelector("#player3");
+}
+
 // Creating engine
 const engine = new Engine();
-
 
 // Creating the game world
 let game = new Game(document.createElement("canvas"));
@@ -26,7 +36,7 @@ let player = new Player(
   GAME_CONFIG.PLAYER_HEIGHT,
   "crimson",
   GAME_CONFIG.PLAYER_SPEED,
-  document.querySelector("#player")
+  playerShip
 );
 const playerCollisionHeight = player.height - (2 * (0.4 * player.height));
 const playerCollisionStartY = player.startY + (0.4 * player.height);
@@ -48,7 +58,6 @@ let higherObstacle = new GameObject(
   document.querySelector("#laser")
 );
 let higherObstcaleGenerator = new HighObstaclesGenerator(game.context, higherObstacle, true);
-higherObstcaleGenerator.normalDifficulty();
 higherObstcaleGenerator.startGeneration(GAME_CONFIG.OBSTCALE_GENERATION_SPEED);
 
 // Creating the lower walls
@@ -63,7 +72,6 @@ let lowerObstacle = new GameObject(
   document.querySelector("#laser")
 );
 let lowerObstcaleGenerator = new LowObstaclesGenerator(game.context, lowerObstacle, true);
-lowerObstcaleGenerator.normalDifficulty();
 lowerObstcaleGenerator.startGeneration(GAME_CONFIG.OBSTCALE_GENERATION_SPEED);
 
 // Creating the rockets attacking the player
@@ -81,8 +89,12 @@ const rocketCollisionHeight = rocket.height - (2 * (0.4 * rocket.height));
 const rocketCollisionStartY = rocket.startY + (0.4 * rocket.height);
 rocket.setCollisionHeightAndStartY(rocketCollisionHeight, rocketCollisionStartY);
 let rocketGenerator = new ProjectileGenerator(game.context, rocket, false);
-rocketGenerator.normalDifficulty();
 rocketGenerator.startGeneration(GAME_CONFIG.PROJECTILE_GENERATION_SPEED);
+
+// Setting arcade mode difficulty
+rocketGenerator.normalDifficulty();
+higherObstcaleGenerator.normalDifficulty();
+lowerObstcaleGenerator.easyDifficulty();
 
 // Used to limit draw damage to every 1000 milliseconds
 let drawDamage = true;
@@ -96,6 +108,7 @@ engine.update(() => {
     if(player.lifes <= 0){
       engine.stop();
       game.gameOver();
+      setTimeout(() => game.goToIndex(), 3000);
     }
 
     // Checking collisions

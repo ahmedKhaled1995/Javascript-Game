@@ -49,7 +49,7 @@ class GameObject{
             this.drawObject();
         }else{
             this.context.drawImage(this.img, this.startX, this.startY, this.width, this.height);
-            this.drawCollider();   // debugging only
+            //this.drawCollider();   // debugging only
         }
     }
 

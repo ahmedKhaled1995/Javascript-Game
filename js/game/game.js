@@ -64,37 +64,52 @@ class Game  {
         }, (1000/GAME_CONFIG.FPS));
     }
 
-    gameOver(){
+    display(message, color, maxSize){
         let fontSize = 8;
-        this.context.fillStyle = "crimson";
-        this.context.strokeStyle= "crimson";
-        this.context.font = `${fontSize}px Arial`;
-
         let id = setInterval(()=>{
             this.clearGameWorld();
+            this.context.fillStyle = color;
+            this.context.strokeStyle= color;
             this.context.fillText(
-                "Game Over",
-                0.5 * GAME_CONFIG.GAME_WORLD_WIDTH - (0.08 * GAME_CONFIG.GAME_WORLD_WIDTH),
+                message,
+                0.5 * GAME_CONFIG.GAME_WORLD_WIDTH - (0.15 * GAME_CONFIG.GAME_WORLD_WIDTH),
                 0.5 * GAME_CONFIG.GAME_WORLD_HEIGHT
             );
             fontSize += 1;
             this.context.font = `${fontSize}px Arial`;
             
-            if(fontSize >= 30){
+            if(fontSize >= maxSize){
                 clearInterval(id);
             }
 
-        }, 0.03 * 1000);
+        }, (1000/GAME_CONFIG.FPS));
+    }
+
+    gameOver(){
+        this.display("Game Over", "crimson", GAME_CONFIG.FPS);
+    }
+
+    playerWon(){
+        this.display("Great Job", "green", GAME_CONFIG.FPS);
+    }
+
+    playerBeatTheGame(){
+        this.display("Impressive Commander. Thanks for Playing!", "green", (GAME_CONFIG.FPS / 2));
+    }
+
+    goToLevel(levelNumber, difficultyLevel, avatarName){
+        location.replace(`./level${levelNumber}.html?level=${difficultyLevel}&avatar=${avatarName}`);
+    }
+
+    goToIndex(){
+        location.replace(`../index.html`);
     }
 
     startGameWorld(){
         this.canvas.width = GAME_CONFIG.GAME_WORLD_WIDTH;
         this.canvas.height = GAME_CONFIG.GAME_WORLD_HEIGHT;
-        //this.canvas.style.backgroundColor = "#eee";
         document.querySelector(".canvas-area").appendChild(this.canvas);
         document.querySelector(".canvas-area").setAttribute('style', `background-size: ${this.canvas.width}px ${this.canvas.height}px`);;
-        //const img = document.querySelector("#background");
-        //this.context.drawImage(img, 0, 0, GAME_CONFIG.GAME_WORLD_WIDTH, GAME_CONFIG.GAME_WORLD_HEIGHT);
     }
 
     clearGameWorld(){

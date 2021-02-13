@@ -3,6 +3,7 @@ section .title{
     letter-spacing: 44px;
     transition: 1s;
     cursor: none;
+    margin-top: auto;
   }
   
   section .title span{
@@ -45,7 +46,7 @@ nav ul li a {
 } */
 
 .content {
-    width: 80%;
+    width: 90%;
     height: 70%;
     position: fixed;
     display: flex;
