@@ -30,11 +30,11 @@ class Game  {
                 0.18 * GAME_CONFIG.GAME_WORLD_HEIGHT
             );
             count += 1;            
-            if(count >= 50){
+            if(count >= GAME_CONFIG.FPS){
                 clearInterval(id);
             }
 
-        }, 0.001 * 1000);
+        }, (1000/GAME_CONFIG.FPS));
     }
 
     drawScore(gameObject){
@@ -58,10 +58,10 @@ class Game  {
                 0.18 * GAME_CONFIG.GAME_WORLD_HEIGHT
             );
             count += 1;
-            if(count >= 50){
+            if(count >= GAME_CONFIG.FPS){
                 clearInterval(id);
             }
-        }, 0.001 * 1000);
+        }, (1000/GAME_CONFIG.FPS));
     }
 
     gameOver(){

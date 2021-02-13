@@ -67,6 +67,9 @@ let rocketGenerator = new ProjectileGenerator(game.context, rocket, false);
 rocketGenerator.normalDifficulty();
 rocketGenerator.startGeneration(GAME_CONFIG.PROJECTILE_GENERATION_SPEED);
 
+// Used to limit draw damage to every 1000 milliseconds
+let drawDamage = true;
+
 // Updating the game world at 30 fps
 engine.update(() => {
     // Clearing game world
@@ -79,10 +82,13 @@ engine.update(() => {
     }
 
     // Checking collisions
-    if(rocketGenerator.collisionHappened(player) || higherObstcaleGenerator.collisionHappened(player)){
+    if(rocketGenerator.collisionHappened(player) ||
+      higherObstcaleGenerator.collisionHappened(player)){
         player.takeDamage();
-        if(player.lifes > 0){  // We check because when the player dies, I don't want to draw the bonus
+        if(player.lifes > 0 && drawDamage){  // We check because when the player dies, I don't want to draw the bonus
+          drawDamage = false;
           game.drawDamageTaken();
+          setTimeout(() => drawDamage = true, 1000);
         }
     }
 
