@@ -20,6 +20,7 @@ if(avatar === "Millennium Falcon"){
 }else if(avatar === "USS Enterprise"){
   playerShip = document.querySelector("#player3");
 }
+console.log(playerShip);
 
 // Creating engine
 const engine = new Engine();
