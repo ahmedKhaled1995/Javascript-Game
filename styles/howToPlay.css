@@ -82,7 +82,7 @@ nav ul li a{
 }
 .description {
     width: 100%;
-    height: 70vh;
+    height: 80vh;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -109,6 +109,9 @@ nav ul li a{
     color: #333;
     margin-bottom: 10px;
 }
+.story-title {
+    letter-spacing: 3px;
+}
 .story .story-desc {
     width: 100%;
     height: 30%;
@@ -122,4 +125,6 @@ nav ul li a{
 .story .story-desc p {
     width: 90%;
     height: auto;
+    letter-spacing: 3px;
+    line-height: 30px;
 }
