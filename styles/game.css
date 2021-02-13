@@ -1,14 +1,17 @@
 body{
     margin: auto;
-    width: 1120px;
+    background-image: url("../assets/images/halo.jpg");
+    background-size: cover;  
+    background-repeat: no-repeat;
+    background-position: center;
 }
 
 .canvas-area{
     margin-top: 4em;
     text-align: center;
-    background-image: url("../assets/images/background.gif");
+    /* background-image: url("../assets/images/background.gif"); */
     background-size: cover;  
-    /* background-size: 960px 540px;*/  /*Will be set using javaScript*/
     background-repeat: no-repeat;
     background-position: center;
+    /* background-size: 960px 540px;*/  /*Will be set using javaScript to take the canvas dimensions*/
 }

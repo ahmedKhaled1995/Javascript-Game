@@ -99,6 +99,7 @@ class Game  {
 
     clearGameWorld(){
         this.context.clearRect(0, 0, this.canvas.width, this.canvas.height);
+        this.canvas.style.backgroundColor = "rgba(0, 0, 0, 0.4)";
         //const img = document.querySelector("#background");
         //this.context.drawImage(document.querySelector("#background"), 0, 0, GAME_CONFIG.GAME_WORLD_WIDTH, GAME_CONFIG.GAME_WORLD_HEIGHT);
     }
