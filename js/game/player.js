@@ -57,8 +57,8 @@ class Player extends GameObject {
                 this.context,
                 this.startX + this.width,
                 this.startY + (0.5 * this.height),
-                GAME_CONFIG.PROJECTILE_WIDTH,
-                GAME_CONFIG.PROJECTILE_HEIGHT,
+                GAME_CONFIG.PLAYER_PROJECTILE_WIDTH,
+                GAME_CONFIG.PLAYER_PROJECTILE_HEIGHT,
                 this.color,
                 GAME_CONFIG.PLAYER_PROJECTILE_SPEED,
                 player_laser
@@ -80,7 +80,7 @@ class Player extends GameObject {
         if(!this.invisible){
             this.lifes -= GAME_CONFIG.PLAYER_TAKEN_DAMAGE;
             this.invisible = true;
-            setTimeout(() => this.invisible = false, 1 * 1000);
+            setTimeout(() => this.invisible = false, GAME_CONFIG.PLAYER_INVINCIBILITY_TIME * 1000);
         }
     }
 

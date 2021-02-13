@@ -106,7 +106,7 @@ engine.update(() => {
         if(player.lifes > 0 && drawDamage){  // We check because when the player dies, I don't want to draw the bonus
           drawDamage = false;
           game.drawDamageTaken();
-          setTimeout(() => drawDamage = true, 1000);          
+          setTimeout(() => drawDamage = true, GAME_CONFIG.PLAYER_INVINCIBILITY_TIME * 1000);          
         }
     }
 
