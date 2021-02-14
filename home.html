@@ -13,7 +13,6 @@
     <link rel="stylesheet" href="./styles/cursor.css">
     <title>Galaxy Fighter</title>
 </head>
-
 <body>
     <section class="space">
         <!-- You can choose a rocket cursor or a colorful circle cursor, choose what you like the most -->
@@ -28,29 +27,35 @@
         <div class="constellation group4"></div>
         <div class="constellation group5"></div>
         <div class="constellation group6"></div>
-        <!-- You can add more constellation groups by uncommenting the following -->
         <!-- <div class="constellation group7"></div> -->
         <!-- <div class="constellation group8"></div> -->
+        <!-- <div class="planets" id="planet-green" relative="-2"><img src="./assets/images/planets/planet-green.png"></div> -->
         <div class="planets" id="planet-stone" relative="4"><img src="./assets/images/planets/planet-stone.png"></div>
-        <div class="planets" id="planet-yellow" relative="-5"><img src="./assets/images/planets/planet-yellow.png">
-        </div>
+        <div class="planets" id="planet-yellow" relative="-5"><img src="./assets/images/planets/planet-yellow.png"></div>
         <div class="planets" id="planet-purple" relative="6"><img src="./assets/images/planets/planet-purple.png"></div>
         <div class="container-btns">
-            <a href="#" class="btn" id="game-mode" onmouseenter="mouseEnterSound()" onclick="clickSound(event)">
+            <a href="./views/game-mode.html" class="btn">
                 <span></span>
                 <span></span>
                 <span></span>
                 <span></span>
                 Start Game
             </a>
-            <a href="#" class="btn" id="how-to-play" onmouseenter="mouseEnterSound()" onclick="clickSound(event)">
+            <a href="#" class="btn">
+                <span></span>
+                <span></span>
+                <span></span>
+                <span></span>
+                Options
+            </a>
+            <a href="./views/howToPlay.html" class="btn">
                 <span></span>
                 <span></span>
                 <span></span>
                 <span></span>
                 How to Play
             </a>
-            <a href="#" class="btn" id="credits" onmouseenter="mouseEnterSound()" onclick="clickSound(event)">
+            <a href="./views/credits.html" class="btn">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -59,16 +64,10 @@
             </a>
         </div>
     </section>
-    <!-- P U T  Y O U R  D E S I R E D  S O U N D T R A C K S  H E R E -->
-    <audio src="./assets/sounds/Space.mp3" autoplay loop></audio>
-    <audio id="btn-click" src="./assets/sounds/click.mp3"></audio>
-    <audio id="btn-mouseenter" src="./assets/sounds/mouseover.mp3"></audio>
-
+    <!-- P U T  Y O U R  D E S I R E D  S O U N D T R A C K  H E R E -->
+    <!-- <audio src="assets/sound/**SOUNDTRACK**" autoplay loop></audio> -->
     <script src="./js/cursorControl.js"></script>
     <script src="./js/parallax.js"></script>
-    <script src="./js/indexRedirection.js"></script>
-    <script src="./js/redirectBtn.js"></script>
-    <script src="./js/gameSound.js"></script>
 </body>
 
 </html>

@@ -1,12 +1,11 @@
-const EASY_LEVEL = document.getElementById("easy-level");
-const INTERMEDIATE_LEVEL = document.getElementById("intermediate-level");
-const HARD_LEVEL = document.getElementById("hard-level");
-const ARCADE_MODE = document.getElementById("arcade-mode");
+const easyLevel = document.getElementById("easyLevel");
+easyLevel.setAttribute("href",`./spaceship-select.html?level=easy`);
 
-function redirectEasyLevel() { EASY_LEVEL.setAttribute("href", `./spaceship-select.html?level=easy`); }
+const intermediateLevel = document.getElementById("intermediateLevel");
+intermediateLevel.setAttribute("href",`./spaceship-select.html?level=intermediate`);
 
-function redirectIntermediateLevel() { INTERMEDIATE_LEVEL.setAttribute("href", `./spaceship-select.html?level=intermediate`); }
+const hardLevel = document.getElementById("hardLevel");
+hardLevel.setAttribute("href",`./spaceship-select.html?level=hard`);
 
-function redirectHardLevel() { HARD_LEVEL.setAttribute("href", `./spaceship-select.html?level=hard`); }
-
-function redirectArcadeMode() { ARCADE_MODE.setAttribute("href", `./spaceship-select.html?level=arcade`); }
+const arcadeLevel = document.getElementById("arcadeLevel");
+arcadeLevel.setAttribute("href",`./spaceship-select.html?level=arcade`);
