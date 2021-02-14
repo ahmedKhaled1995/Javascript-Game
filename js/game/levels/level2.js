@@ -136,7 +136,7 @@ engine.update(() => {
 
     // Updating rocket generator and obstcales 
     rocketGenerator.moveObjects("-x");
-    lowerObstcaleGenerator.moveAndStretch("-x");
+    lowerObstcaleGenerator.moveAndStretch("-x");  // culprit
 
     // Updating player
     player.checkAcceleration();
