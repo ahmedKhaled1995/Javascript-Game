@@ -18,7 +18,7 @@ class LowObstaclesGenerator extends ObjectGenerator{
             // Correcting the start point of the lower obstacle
             this.objectMap[index].startY = GAME_CONFIG.GAME_WORLD_HEIGHT - this.objectMap[index].height;
             this.objectMap[index].collisionStartY = GAME_CONFIG.GAME_WORLD_HEIGHT - this.objectMap[index].height;
-            this.objectMap[index].drawSprite();
+            //this.objectMap[index].drawSprite();
         }
         // super.moveAndStretch(direction);
         // //Correcting the start point of the lower obstacle
