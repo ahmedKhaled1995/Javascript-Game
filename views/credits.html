@@ -10,7 +10,7 @@
 <body>
   <nav>
     <ul>
-      <li><a href="/">BACK</a></li>
+      <li><a href="#" id='back' onclick="clickSound(event)">BACK</a></li>
     </ul>
   </nav>
   <main class="card">
@@ -30,6 +30,12 @@
     </div>
   </main>
   <audio src="../assets/sounds/Space.mp3" autoplay loop></audio>
+    <audio id="btn-click" src="../assets/sounds/click.mp3"></audio>
+    <audio id="btn-mouseenter" src="../assets/sounds/mouseover.mp3"></audio>
+  
+    <script src="../js/indexRedirection.js"></script>
+    <script src="../js/redirectBtn.js"></script>
+    <script src="../js/gameSound.js"></script>
 </body>
 
 </html>

@@ -9,7 +9,7 @@
 <body>
     <nav>
         <ul>
-            <li><a href="/">BACK</a></li>
+            <li><a href="#" id='back' onclick="clickSound(event)">BACK</a></li>
         </ul>
     </nav>
     <header>
@@ -71,8 +71,13 @@
         </div>
     </header>
     <audio src="../assets/sounds/Space.mp3" autoplay loop></audio>
-
+    <audio id="btn-click" src="../assets/sounds/click.mp3"></audio>
+    <audio id="btn-mouseenter" src="../assets/sounds/mouseover.mp3"></audio>
+    
     <script src="https://cdnjs.cloudflare.com/ajax/libs/animejs/2.0.2/anime.min.js"></script>
+    <script src="../js/indexRedirection.js"></script>
+    <script src="../js/redirectBtn.js"></script>
+    <script src="../js/gameSound.js"></script>
     <script src="../js/howToPlay.js"></script>
 </body>
 
