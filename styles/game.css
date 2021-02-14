@@ -9,7 +9,6 @@ body{
 .canvas-area{
     margin-top: 16px;
     text-align: center;
-    /* background-image: url("../assets/images/background.gif"); */
     background-size: cover;  
     background-repeat: no-repeat;
     background-position: center;
