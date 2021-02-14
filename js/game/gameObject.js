@@ -50,8 +50,8 @@ class GameObject{
         }else{
             //console.log(this.img);
             //console.log("---");
-            //this.context.drawImage(this.img, this.startX, this.startY, this.width, this.height);
-            this.drawCollider();   // debugging only
+            this.context.drawImage(this.img, this.startX, this.startY, this.width, this.height);
+            //this.drawCollider();   // debugging only
         }
     }
 
