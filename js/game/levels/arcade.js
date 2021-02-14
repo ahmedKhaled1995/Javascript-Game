@@ -9,7 +9,8 @@ import ProjectileGenerator from "../projectileGenerator.js";
 import Engine from "../engine.js";
 
 
-// Getting the query params to know player's ship and difficulty setting 
+let domloaded = () => {
+  // Getting the query params to know player's ship and difficulty setting 
 const urlParams = new URLSearchParams(window.location.search);
 let playerShip = document.querySelector("#player1");
 let avatar = "Pillar Of Autumn";
@@ -150,3 +151,9 @@ engine.update(() => {
     game.drawScore(player);
     game.drawLifes(player);
 });
+};
+
+document.addEventListener('DOMContentLoaded',domloaded,false);
+
+
+

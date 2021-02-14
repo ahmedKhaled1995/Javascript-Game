@@ -38,8 +38,10 @@ class LowObstaclesGenerator extends ObjectGenerator{
                 height = this.gameObject.height - GAME_CONFIG.SAFE_FACTOR;
                 startY = this.gameObject.startY;
             }
+
             const generatedObject = new GameObject(this.context, startX, startY,
                 width, height, this.gameObject.color, this.speed, this.gameObject.img);
+                
             this.objectMap[this.generationCount] = generatedObject;
             this.generationCount += 1;
             // Checking out of boundries objects
