@@ -5,7 +5,7 @@ section .title{
     cursor: none;
     margin-top: auto;
   }
-  
+
   section .title span{
     font-size: 32px;
     letter-spacing: 22px;
@@ -57,7 +57,7 @@ nav ul li a {
 .type {
     margin: 10px;
     width: 28%;
-    height: 90%;
+    height: 80%;
     display: flex;
     justify-content: center;
     align-items: center;
@@ -123,4 +123,3 @@ nav ul li a {
     width: 80%;
     height: auto;
 }
-

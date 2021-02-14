@@ -3,7 +3,7 @@ body {
 }
 
 /*---------------------------------------------------------------------------------------------*/
-                         /*C O L O R F U L   C U R S O R    S T Y L E*/
+                        /*C O L O R F U L   C U R S O R    S T Y L E*/
 .cursor.colorful {
     position: fixed;
     background: aqua;
@@ -12,11 +12,12 @@ body {
     border-radius: 50%;
     pointer-events: none;
     box-shadow: 0 0 20px aqua,
-                0 0 60px aqua,
-                0 0 100px aqua;
+        0 0 60px aqua,
+        0 0 100px aqua;
     animation: changeColor 2s infinite;
     transform: translate(-50%, -50%);
     display: none;
+    z-index: 1;
 }
 
 .cursor.colorful:before {
@@ -45,21 +46,33 @@ body {
 }
 
 /*---------------------------------------------------------------------------------------------*/
-                       /*R O C K E T   C U R S O R    S T Y L E*/
+                            /*R O C K E T   C U R S O R    S T Y L E*/
 .cursor.rocket {
+    width: 3rem;
+    height: 3rem;
+    border: 2px solid transparent;
+    border-radius: 50%;
     position: absolute;
+    transform: translate(-50%, -50%);
     pointer-events: none;
+    transition: all 0.3s ease;
+    transition-property: background, transform;
+    transform-origin: 100% 100%;
     animation: shake 0.2s ease infinite;
+    z-index: 2;
 }
 
 .cursor.rocket img {
     max-height: 6vh;
+    position: relative;
+    left: 13%
 }
 
 .cursor.rocket::after {
     content: '';
     position: absolute;
-    bottom: -27px;
+    /* bottom: -27px; */
+    bottom: -2.1rem;
     left: 50%;
     transform: translateX(-50%);
     width: 4.8px;
@@ -68,8 +81,14 @@ body {
     filter: blur(0.6px);
 }
 
+.over-btn {
+    background: black;  
+}
+
 @keyframes shake {
-    0%, 100% {
+
+    0%,
+    100% {
         transform: translateY(-52px) translateX(-50%);
     }
 
@@ -77,4 +96,3 @@ body {
         transform: translateY(-48px) translateX(-50%);
     }
 }
-                    

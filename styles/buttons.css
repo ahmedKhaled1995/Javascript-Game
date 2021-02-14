@@ -5,13 +5,14 @@
     justify-content: center;
     align-items: center;
     flex-direction: column;
+    z-index: 1;
 }
 
 .btn {
     position: relative;
     display: inline-block;
     padding: 20px 30px;
-    margin: 23px 0;
+    margin: 16px 0;
     color: aquamarine;
     font-size: 25px;
     text-transform: uppercase;
@@ -41,7 +42,6 @@
                 0 0 50px aqua,
                 0 0 200px aqua;
 }
-
 
 .btn span {
     position: absolute;

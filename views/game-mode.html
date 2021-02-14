@@ -26,35 +26,29 @@
         <div class="constellation group4"></div>
         <div class="constellation group5"></div>
         <div class="constellation group6"></div>
-        <!-- <div class="constellation group7"></div> -->
-        <!-- <div class="constellation group8"></div> -->
-        <!-- <div class="planets" id="planet-green" relative="-2"><img src="../assets/images/planets/planet-green.png"></div>
-        <div class="planets" id="planet-stone" relative="4"><img src="../assets/images/planets/planet-stone.png"></div>
-        <div class="planets" id="planet-yellow" relative="-5"><img src="../assets/images/planets/planet-yellow.png"></div>
-        <div class="planets" id="planet-purple" relative="6"><img src="../assets/images/planets/planet-purple.png"></div> -->
         <div class="container-btns">
-            <a href="" class="btn" id="easyLevel">
+            <a href="" class="btn" id="easyLevel" onmouseenter="mouseEnterSound()" onclick="clickSound()">
                 <span></span>
                 <span></span>
                 <span></span>
                 <span></span>
                 Easy
             </a>
-            <a href="" class="btn" id="intermediateLevel">
+            <a href="" class="btn" id="intermediateLevel" onmouseenter="mouseEnterSound()" onclick="clickSound()">
                 <span></span>
                 <span></span>
                 <span></span>
                 <span></span>
                 Intermediate
             </a>
-            <a href="" class="btn" id="hardLevel">
+            <a href="" class="btn" id="hardLevel" onmouseenter="mouseEnterSound()" onclick="clickSound()">
                 <span></span>
                 <span></span>
                 <span></span>
                 <span></span>
                 Hard
             </a>
-            <a href="" class="btn" id="arcadeLevel">
+            <a href="" class="btn" id="arcadeLevel" onmouseenter="mouseEnterSound()" onclick="clickSound()">
                 <span></span>
                 <span></span>
                 <span></span>
@@ -64,10 +58,13 @@
         </div>
     </section>
     <!-- P U T  Y O U R  D E S I R E D  S O U N D T R A C K  H E R E -->
-    <audio src="../assets/sounds/Interstellar2-1.mp3" autoplay loop></audio>
+    <audio src="../assets/sounds/Space.mp3" autoplay loop></audio>
+    <audio id="btn-click" src="../assets/sounds/click.mp3"></audio>
+    <audio id="btn-mouseenter" src="../assets/sounds/mouseover.mp3"></audio>
+    
     <script src="../js/cursorControl.js"></script>
-    <!-- <script src="../js/parallax.js"></script> -->
     <script src="../js/spaceshipRedirection.js"></script>
+    <script src="../js/gameSound.js"></script>
 </body>
 
 </html>

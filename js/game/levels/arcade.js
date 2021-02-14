@@ -94,7 +94,7 @@ rocketGenerator.startGeneration(GAME_CONFIG.PROJECTILE_GENERATION_SPEED);
 // Setting arcade mode difficulty
 rocketGenerator.normalDifficulty();
 higherObstcaleGenerator.normalDifficulty();
-lowerObstcaleGenerator.easyDifficulty();
+lowerObstcaleGenerator.normalDifficulty();
 
 // Used to limit draw damage to every 1000 milliseconds
 let drawDamage = true;
