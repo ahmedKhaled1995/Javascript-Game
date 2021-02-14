@@ -14,6 +14,8 @@
 </head>
 
 <body>
+
+
     <section class="space">
         <!-- You can choose a rocket cursor or a colorful circle cursor, choose what you like the most -->
         <!-- <div class="cursor colorful"></div> -->
@@ -27,13 +29,12 @@
         <div class="constellation group4"></div>
         <div class="constellation group5"></div>
         <div class="constellation group6"></div>
-        <!-- You can add more constellation groups by uncommenting the following -->
         <!-- <div class="constellation group7"></div> -->
         <!-- <div class="constellation group8"></div> -->
         <header>
             <div class="bg">
                 <div class="content">
-                    <div class="type" onClick="selectAvatar('Pillar Of Autumn')" onmouseenter="mouseEnterSound()">
+                    <div class="type" onClick="selectAvatar('Pillar Of Autumn')">
                         <div class="img-part">
                             <img src="../assets/images/falcon-upright.png">
                         </div>
@@ -44,7 +45,7 @@
                             <p>A Halcyon-class light cruiser in the UNSC Navy</p>
                         </div>
                     </div>
-                    <div class="type" onClick="selectAvatar('Millennium Falcon')" onmouseenter="mouseEnterSound()">
+                    <div class="type" onClick="selectAvatar('Millennium Falcon')">
                         <div class="img-part">
                             <img src="../assets/images/thuderstorm-upright.png">
                         </div>
@@ -52,11 +53,11 @@
                             <span>Millennium Falcon</span>
                         </div>
                         <div class="desc-part">
-                            <p>A Corellian YT-1300f light freighter most famously used
+                            <p>A Corellian YT-1300f light freighter most famously used 
                                 during and following the Galactic Civil War.</p>
                         </div>
                     </div>
-                    <div class="type" onClick="selectAvatar('USS Enterprise')" onmouseenter="mouseEnterSound()">
+                    <div class="type" onClick="selectAvatar('USS Enterprise')">
                         <div class="img-part">
                             <img src="../assets/images/USS-Interprise-upright.png" alt="rocket-3">
                         </div>
@@ -64,7 +65,7 @@
                             <span>USS Enterprise</span>
                         </div>
                         <div class="desc-part">
-                            <p>A decommissioned United States Navy aircraft carrier. She was the
+                            <p>A decommissioned United States Navy aircraft carrier. She was the 
                                 first nuclear-powered aircraft carrier</p>
                         </div>
                     </div>
@@ -73,15 +74,11 @@
         </header>
     </section>
 
-    <!-- P U T  Y O U R  D E S I R E D  S O U N D T R A C K S  H E R E -->
+    <!-- P U T  Y O U R  D E S I R E D  S O U N D T R A C K  H E R E -->
     <audio src="../assets/sounds/Space.mp3" autoplay loop></audio>
-    <audio id="btn-click" src="../assets/sounds/click.mp3"></audio>
-    <audio id="btn-mouseenter" src="../assets/sounds/mouseover.mp3"></audio>
-
     <script src="../js/cursorControl.js"></script>
     <script src="../js/parallax.js"></script>
     <script src="../js/gameRedirection.js"></script>
-    <script src="../js/gameSound.js"></script>
 </body>
 
 </html>
