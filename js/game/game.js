@@ -102,7 +102,7 @@ class Game  {
     }
 
     goToIndex(){
-        location.replace(`../index.html`);
+        location.replace(`/`);
     }
 
     startGameWorld(){

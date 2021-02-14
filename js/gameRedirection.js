@@ -4,6 +4,6 @@ function selectAvatar(avatarName) {
     if(level === "arcade"){
         location.replace(`../levels/arcade.html?avatar=${avatarName}`);
     }else{
-        location.replace(`../levels/level2.html?level=${level}&avatar=${avatarName}`);
+        location.replace(`../levels/level1.html?level=${level}&avatar=${avatarName}`);
     }
 }
