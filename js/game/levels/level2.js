@@ -60,7 +60,7 @@ let lowerObstacle = new GameObject(
   document.querySelector("#laser")
 );
 let lowerObstcaleGenerator = new LowObstaclesGenerator(game.context, lowerObstacle, true);
-lowerObstcaleGenerator.startGeneration(GAME_CONFIG.OBSTCALE_GENERATION_SPEED, true);
+lowerObstcaleGenerator.startGeneration(GAME_CONFIG.OBSTCALE_GENERATION_SPEED);
 
 // Creating the rockets attacking the player
 let rocket = new GameObject(
